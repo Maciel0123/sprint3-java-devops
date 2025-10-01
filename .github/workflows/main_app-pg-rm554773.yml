@@ -1,37 +1,37 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: 'Build and deploy JAR app to Azure Web App: app-pg-rm554773'
 
 on:
   push:
-    branches:
-    - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Set up Java version
-      uses: actions/setup-java@v1
+    - uses: actions/checkout@v4
+
+    # Configuração do Java
+    - name: Set up Java
+      uses: actions/setup-java@v4
       with:
+        distribution: temurin
         java-version: '17'
-    
+
+    # Construção com Maven
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean package -DskipTests
       env:
         SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
         SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
         SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
 
+    # Deploy no Azure Web App
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
-      with: 
-        app-name: 'app-pg-rm554773'
+      with:
+        app-name: 'app-pg-rm556219'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_26bfd99eaa964a519f6e3d770673317e }}
-        package: '${{ github.workspace }}/target/*.jar'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_26BFD99EAA964A519F6E3D770673317E }}
+        package: 'target/*.jar'
