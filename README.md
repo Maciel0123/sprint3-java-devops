@@ -139,6 +139,38 @@ cd sprint1-java
 
 - Integração com API dos gateways IoT
 - Integração com o front-end
+
+## Executando com Azure App Service
+
+- Faça um Fork do projeto original
+- Baixe o scrip .sh localizado na raiz do projeto
+- Abra o Azure CLI (em sua conta) e execute os comandos a baixo:
+```
+az provider register --namespace Microsoft.Web
+ 
+az provider register --namespace Microsoft.Insights
+az provider register --namespace Microsoft.OperationalInsights
+ 
+az provider register --namespace Microsoft.ServiceLinker
+ 
+az provider register --namespace Microsoft.Sql
+ 
+az provider register --namespace Microsoft.DBforPostgreSQL
+ 
+az extension add --name application-insights
+```
+- Depois clique em "Gerenciar Arquivos" e faça o upload do script
+- Execute os comandos abaixo, o primeiro irá dar permissão para executar o arquivo e o segudo irá executa-lo
+```
+chomod +x ./Script-Challenge.sh
+```
+```
+./Script-Challenge.sh
+```
+- Após o comando os recursos serão criados e será solicitado que você faça a autenticação no github
+- Acesse a configurações, vá em security> secrets and variables e cadastre suas variaveis de ambiente
+- Vá em actions e faça um 're-run' do build
+- Após o build ser concluido você reberá uma URL para usar a API
   
 ## 👥 Integrantes
 
