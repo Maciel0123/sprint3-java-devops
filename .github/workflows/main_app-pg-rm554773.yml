@@ -1,4 +1,4 @@
-name: 'app-pg-rm556219'
+name: 'app-pg-rm554773'
 
 on:
   push:
@@ -31,6 +31,6 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'app-pg-rm556219'
+        app-name: 'app-pg-rm554773'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_26BFD99EAA964A519F6E3D770673317E }}
         package: 'target/*.jar'
