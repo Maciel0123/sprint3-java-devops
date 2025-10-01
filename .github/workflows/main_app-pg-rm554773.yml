@@ -1,4 +1,4 @@
-name: 'Build and deploy JAR app to Azure Web App: app-pg-rm554773'
+name: 'app-pg-rm556219'
 
 on:
   push:
