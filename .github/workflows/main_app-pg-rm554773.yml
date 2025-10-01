@@ -23,11 +23,15 @@ jobs:
     
     - name: Build with Maven
       run: mvn clean install
-
+      env:
+        SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
+        SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
+        SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+        
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with: 
         app-name: 'app-pg-rm554773'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a406fc065a96448d8fc3aee4243cdec0 }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A406FC065A96448D8FC3AEE4243CDEC0 }}
         package: '${{ github.workspace }}/target/*.jar'
