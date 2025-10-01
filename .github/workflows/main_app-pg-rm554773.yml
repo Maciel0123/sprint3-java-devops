@@ -32,6 +32,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'app-pg-rm556219'
-        slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_26BFD99EAA964A519F6E3D770673317E }}
         package: 'target/*.jar'
