@@ -143,7 +143,7 @@ cd sprint1-java
 ## Executando com Azure App Service
 
 - Faça um Fork do projeto original
-- Baixe o scrip .sh localizado na raiz do projeto
+- Baixe o scrip DevOps-Challenge.sh localizado na raiz do projeto
 - Abra o Azure CLI (em sua conta) e execute os comandos a baixo:
 ```
 az provider register --namespace Microsoft.Web
@@ -162,15 +162,15 @@ az extension add --name application-insights
 - Depois clique em "Gerenciar Arquivos" e faça o upload do script
 - Execute os comandos abaixo, o primeiro irá dar permissão para executar o arquivo e o segudo irá executa-lo
 ```
-chomod +x ./Script-Challenge.sh
+chomod +x ./DevOps-Challenge.sh
 ```
 ```
-./Script-Challenge.sh
+./DevOps-Challenge.sh
 ```
 - Após o comando os recursos serão criados e será solicitado que você faça a autenticação no github
-- Acesse a configurações, vá em security> secrets and variables e cadastre suas variaveis de ambiente
+- Acesse a configurações, vá em security>secrets and variables>actions e cadastre suas variaveis de ambiente
 - Vá em actions e faça um 're-run' do build
-- Após o build ser concluido você reberá uma URL para usar a API
+- Após o build ser concluido você reberá uma URL para usar a aplicação
   
 ## 👥 Integrantes
 
