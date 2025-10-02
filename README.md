@@ -169,8 +169,9 @@ chomod +x ./DevOps-Challenge.sh
 ```
 - Após o comando os recursos serão criados e será solicitado que você faça a autenticação no github
 - Acesse a configurações, vá em security>secrets and variables>actions e cadastre suas variaveis de ambiente
-- Vá em actions e faça um 're-run' do build
 - Após o build ser concluido você reberá uma URL para usar a aplicação
+- Atualize o diretorio "workflows" e coloque as variaveis no seu arquivo yml
+- Logo após o commit o deploy deve rodar sozinho, caso não aconteça, vá em "actions" e faça um 're-run' do build
   
 ## 👥 Integrantes
 
