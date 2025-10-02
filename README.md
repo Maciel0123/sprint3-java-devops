@@ -139,6 +139,36 @@ cd sprint1-java
 
 - Integração com API dos gateways IoT
 - Integração com o front-end
+##Arquitetura do Projeto
+```mermaid
+flowchart TD
+  %% ===== GITHUB =====
+  subgraph GitHub
+    DEV[Developer]
+    REPO[Repository: Maciel0123/sprint3-java-devops]
+    GHA[GitHub Actions - Build & Deploy]
+    DEV -->|git push main| REPO
+    REPO --> GHA
+  end
+
+  %% ===== AZURE =====
+  subgraph Azure
+    subgraph RG["Resource Group: rg-futurestack"]
+      PLAN["App Service Plan: plan-pg-rm554773 (Linux F1)"]
+      APP["Web App: app-pg-rm554773"]
+      AI["Application Insights: ai-pg-rm554773"]
+      DB["PostgreSQL Flexible Server: pg-rm554773\nDatabase: futurestack"]
+    end
+  end
+
+  %% ===== FLUXOS =====
+  USER((Usuário)) -->|HTTP| APP
+  GHA -->|deploy JAR| APP
+  APP -->|JDBC SSL\nSPRING_DATASOURCE_*| DB
+  APP -->|Telemetry| AI
+  PLAN -. hospeda .- APP
+
+```
 
 ## Executando com Azure App Service
 
